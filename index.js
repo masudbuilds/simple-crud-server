@@ -33,6 +33,13 @@ app.get ("/users", async(req, res) => {
 
 })
 
+app.post("/users", async(req, res) => {
+  const newUser = req.body;
+  console.log("Adding New User:",newUser);
+  const result = await users.insertOne(newUser);
+  res.send(result);
+})
+
 app.get("/", (req, res) => {
   res.send('Hi baby')
 })
