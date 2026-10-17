@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { MongoClient } from "mongodb";
+import "dotenv/config";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -8,7 +9,7 @@ app.use(cors());
 app.use(express.json())
 
 const client = new MongoClient(
-  "mongodb+srv://simpleCrudAdmin:dg912Ks5y48XwRPv@cluster0.jpk7gsk.mongodb.net/",
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.jpk7gsk.mongodb.net/`,
 );
 
 app.get("/", (req, res) => {
